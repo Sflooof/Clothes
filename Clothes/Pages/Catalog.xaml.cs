@@ -13,17 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Clothes
+namespace Clothes.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Catalog.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Catalog : Page
     {
-        public MainWindow()
+        public Catalog()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Pages.LoginPage());
+            listview_cloth.ItemsSource = App.db.Cloth.ToList();
+        }
+
+        private void BT_exit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }
