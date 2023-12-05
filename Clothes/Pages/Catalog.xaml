@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Clothes.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="1000"
       Title="Catalog">
 
     <Grid>
@@ -23,11 +23,23 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0"></Image>
+                        <Image Grid.Column="0">
+                            <Image.Source>
+                                <Binding Path="photo">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>../Images/picture.png</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
                         <StackPanel Grid.Column="1" Margin="5" Orientation="Vertical">
-                            <TextBlock Width="auto" Text="{Binding name}"></TextBlock>
                             
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Название:"></TextBlock>
+                                <TextBlock Width="auto" Text="{Binding name}"></TextBlock>
+                            </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Цвет:"></TextBlock>
                                 <TextBlock Width="auto" Text="{Binding Correct_Color}"></TextBlock>
@@ -59,6 +71,10 @@
                             </StackPanel>
                             
                             </StackPanel>
+                        <StackPanel HorizontalAlignment="Center" Grid.Column="2">
+                            <Button Content="Редактировать" Name="BT_edit" Click="BT_edit_Click"></Button>
+                            <Button Content="Удалить" Name="BT_delete" Click="BT_delete_Click"></Button>
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

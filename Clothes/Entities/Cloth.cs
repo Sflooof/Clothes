@@ -24,6 +24,7 @@ namespace Clothes.Entities
         public decimal price { get; set; }
         public System.DateTime delivery_date { get; set; }
         public System.DateTime purchase_date { get; set; }
+        public byte[] photo { get; set; }
     
         public string Correct_Color
         {

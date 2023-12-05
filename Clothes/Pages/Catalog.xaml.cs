@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clothes.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,11 +25,35 @@ namespace Clothes.Pages
         {
             InitializeComponent();
             listview_cloth.ItemsSource = App.db.Cloth.ToList();
+            //listview_cloth.ItemsSource = clothesEntities.GetContext().Cloth.ToList();
         }
 
         private void BT_exit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void BT_delete_Click(object sender, RoutedEventArgs e)
+        {
+            var del_clothes = (sender as Button).DataContext as Entities.Cloth;
+            if (MessageBox.Show($"Вы уверены что хотите удалить {del_clothes.name} " +
+                $"{del_clothes.manufacturer}?",
+                "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning)
+                == MessageBoxResult.Yes)
+            {
+                App.db.Cloth.Remove(del_clothes);
+                App.db.SaveChanges();
+                UpdateClothes();
+            }
+        }
+
+        private void BT_edit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.AddEdit());
+        }
+        private void UpdateClothes()
+        {
+
         }
     }
 }

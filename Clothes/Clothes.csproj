@@ -118,6 +118,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AddEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Catalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,6 +132,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\AddEdit.xaml.cs">
+      <DependentUpon>AddEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Catalog.xaml.cs">
       <DependentUpon>Catalog.xaml</DependentUpon>
     </Compile>
@@ -150,6 +157,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EntityDeploy Include="Entities\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -178,6 +186,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\picture.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

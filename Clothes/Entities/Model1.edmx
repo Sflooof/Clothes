@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище clothesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище clothesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cloth">
           <Key>
             <PropertyRef Name="Id_cloth" />
@@ -19,6 +19,7 @@
           <Property Name="price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="delivery_date" Type="date" Nullable="false" />
           <Property Name="purchase_date" Type="date" Nullable="false" />
+          <Property Name="photo" Type="image" />
         </EntityType>
         <EntityType Name="Color">
           <Key>
@@ -191,8 +192,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="clothesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -215,6 +215,7 @@
           <NavigationProperty Name="Manufacturer1" Relationship="Self.FK_Cloth_Manufacturer" FromRole="Cloth" ToRole="Manufacturer" />
           <NavigationProperty Name="Size1" Relationship="Self.FK_Cloth_Size" FromRole="Cloth" ToRole="Size" />
           <NavigationProperty Name="Supplier1" Relationship="Self.FK_Cloth_Supplier" FromRole="Cloth" ToRole="Supplier" />
+          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Color">
           <Key>
@@ -403,6 +404,7 @@
           <EntitySetMapping Name="Cloth">
             <EntityTypeMapping TypeName="clothesModel.Cloth">
               <MappingFragment StoreEntitySet="Cloth">
+                <ScalarProperty Name="photo" ColumnName="photo" />
                 <ScalarProperty Name="Id_cloth" ColumnName="Id_cloth" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="color" ColumnName="color" />
