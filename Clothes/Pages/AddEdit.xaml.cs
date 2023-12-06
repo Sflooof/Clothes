@@ -24,5 +24,15 @@ namespace Clothes.Pages
         {
             InitializeComponent();
         }
+
+        private void BT_save_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BT_open_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

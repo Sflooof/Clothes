@@ -26,29 +26,6 @@ namespace Clothes.Entities
         public System.DateTime purchase_date { get; set; }
         public byte[] photo { get; set; }
     
-        public string Correct_Color
-        {
-            get
-            {
-                return Color1.name;
-            }
-        }
-
-        public string Correct_Manufacturer
-        {
-            get
-            {
-                return Manufacturer1.name;
-            }
-        }
-        public string Correct_Size
-        {
-            get
-            {
-                return Size1.name;
-            }
-        }
-
         public virtual Color Color1 { get; set; }
         public virtual Composition Composition1 { get; set; }
         public virtual Manufacturer Manufacturer1 { get; set; }

@@ -8,9 +8,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LoginPage">
 
-    <Grid>
-        <Grid Background="#F9ECCC"></Grid>
+    <Grid Background="#F9ECCC">
         <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="Авторизация" Width="90" FontWeight="Bold"></TextBlock>
             <TextBlock Text="Логин"></TextBlock>
             <TextBox x:Name="TB_login"></TextBox>
             <TextBlock Text="Пароль"></TextBlock>
