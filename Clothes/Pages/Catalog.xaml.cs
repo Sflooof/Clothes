@@ -49,7 +49,8 @@ namespace Clothes.Pages
 
         private void BT_edit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Pages.AddEdit());
+            var editCloth = (sender as Button).DataContext as Entities.Cloth;
+            NavigationService.Navigate(new Pages.AddEdit(editCloth));
         }
         private void UpdateClothes()
         {

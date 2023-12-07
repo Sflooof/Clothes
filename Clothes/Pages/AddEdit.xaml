@@ -12,7 +12,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <StackPanel>
                 <TextBlock Text="Назавние"></TextBlock>
-                <TextBox x:Name="TB_name"></TextBox>
+                <TextBox x:Name="TB_name" Text="{Binding name}"></TextBox>
                 
                 <TextBlock Text="Цвет"></TextBlock>
                 <ComboBox x:Name="CB_color"></ComboBox>
@@ -33,7 +33,7 @@
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Цена"></TextBlock>
-                <TextBox x:Name="TB_price"></TextBox>
+                <TextBox x:Name="TB_price" Text="{Binding price}"></TextBox>
 
                 <TextBlock Text="Дата поставки"></TextBlock>
                 <DatePicker x:Name="TB_delivery_date"></DatePicker>
@@ -44,6 +44,7 @@
                 <Image x:Name="Image_photo" Width="100" Height="100"></Image>
                 <Button Name="BT_open" Content="Выбрать" Click="BT_open_Click"></Button>
                 <Button Name="BT_save" Content="Сохранить" Click="BT_save_Click"></Button>
+                <Button Name="BT_exit" Content="Назад" Click="BT_exit_Click"></Button>
             </StackPanel>
             </StackPanel>
     </Grid>

@@ -42,17 +42,17 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Цвет:"></TextBlock>
-                                <TextBlock Width="auto" Text="{Binding Correct_Color}"></TextBlock>
+                                <TextBlock Width="auto" Text="{Binding CorrectColor}"></TextBlock>
                             </StackPanel>
                             
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Производитель:"></TextBlock>
-                                <TextBlock Width="auto" Text="{Binding Correct_Manufacturer}"></TextBlock>
+                                <TextBlock Width="auto" Text="{Binding CorrectManufacturer}"></TextBlock>
                             </StackPanel>
                             
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Размер:"></TextBlock>
-                                <TextBlock Width="auto" Text="{Binding Correct_Size}"></TextBlock>
+                                <TextBlock Width="auto" Text="{Binding CorrectSize}"></TextBlock>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
@@ -72,8 +72,8 @@
                             
                             </StackPanel>
                         <StackPanel HorizontalAlignment="Center" Grid.Column="2">
-                            <Button Content="Редактировать" Name="BT_edit" Click="BT_edit_Click"></Button>
-                            <Button Content="Удалить" Name="BT_delete" Click="BT_delete_Click"></Button>
+                            <Button Content="Редактировать" Name="BT_edit" Click="BT_edit_Click" Visibility="{Binding AdminVisibiliti}"></Button>
+                            <Button Content="Удалить" Name="BT_delete" Click="BT_delete_Click" Visibility="{Binding AdminVisibiliti}"></Button>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

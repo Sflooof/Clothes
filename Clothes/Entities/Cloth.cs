@@ -26,6 +26,58 @@ namespace Clothes.Entities
         public System.DateTime purchase_date { get; set; }
         public byte[] photo { get; set; }
     
+        public string CorrectColor
+        {
+            get
+            {
+                return Color1.name.ToString();
+            }
+        }
+        public string CorrectComposition
+        {
+            get
+            {
+                return Composition1.name.ToString();
+            }
+        }
+        public string CorrectSize
+        {
+            get
+            {
+                return Size1.name.ToString();
+            }
+        }
+        public string CorrectSupplier
+        {
+            get
+            {
+                return Supplier1.name.ToString();
+            }
+        }
+        public string CorrectManufacturer
+        {
+            get
+            {
+                return Manufacturer1.name.ToString();
+            }
+        }
+
+        public string AdminVisibiliti
+        {
+            get
+            {
+                if (App.CurrentUser == null)
+                {
+                    return "Hidden";
+                }
+                else if (App.CurrentUser.role == 1)
+                {
+                    return "Hidden";
+                }
+                else return "Visible";
+            }
+        }
+
         public virtual Color Color1 { get; set; }
         public virtual Composition Composition1 { get; set; }
         public virtual Manufacturer Manufacturer1 { get; set; }
