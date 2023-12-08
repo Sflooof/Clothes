@@ -87,5 +87,10 @@ namespace Clothes.Pages
                 listview_cloth.ItemsSource = App.db.Cloth.ToList();
             }
         }
+
+        private void BT_add_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.AddEdit(null));
+        }
     }
 }

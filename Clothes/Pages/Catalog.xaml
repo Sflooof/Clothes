@@ -21,7 +21,7 @@
             <ComboBoxItem Content="По возрастанию цены"></ComboBoxItem>
             <ComboBoxItem Content="По убыванию цены"></ComboBoxItem>
         </ComboBox>
-        <ListView Grid.Row="1" Name="listview_cloth" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <ListView Grid.Row="1" Name="listview_cloth">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -85,5 +85,6 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button Grid.Row="2" Content="Назад" Name="BT_exit" Click="BT_exit_Click"></Button>
+        <Button Grid.Row="2" Content="Добавить" Name="BT_add" Click="BT_add_Click" HorizontalAlignment="Left"></Button>
     </Grid>
 </Page>
