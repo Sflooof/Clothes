@@ -29,11 +29,11 @@ namespace Clothes.Pages
         {
             
             InitializeComponent();
-            FillComboBox();
 
             if (curCloth != null)
                 _curCloth = curCloth;
 
+            FillComboBox();
             DataContext =_curCloth;
         }
 
@@ -43,10 +43,11 @@ namespace Clothes.Pages
             {
                 CB_color.Items.Add(item.name);
             }
-            var _curColor = App.db.Color.FirstOrDefault(x => x.Id_color == _curCloth.color);
+            //var _curColor = App.db.Color.FirstOrDefault(x => x.Id_color == _curCloth.color);
+            var _curColor = App.db.Color.Where(x => x.Id_color == _curCloth.color).First();
             CB_color.SelectedItem = _curColor.name;
 
-            foreach (var item in App.db.Composition.ToList()) 
+            foreach (var item in App.db.Composition.ToList())
             {
                 CB_composition.Items.Add(item.name);
             }
@@ -77,14 +78,27 @@ namespace Clothes.Pages
             //Получение даты в DateTimePicker
             TB_delivery_date.Text = _curCloth.delivery_date.ToString();
             TB_purchase_date.Text = _curCloth.purchase_date.ToString();
+
+
         }
 
         private void BT_save_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder(); //счётчик ошибок
 
+            decimal cost = 0;
             if (string.IsNullOrWhiteSpace(_curCloth.name)) //проверка на поле
                 errors.AppendLine("Введите название!");
+            if (CB_color.SelectedItem == null)
+                errors.AppendLine("Введите цвет!");
+            if (CB_composition.SelectedItem == null)
+                errors.AppendLine("Введите состав!");
+            if (CB_size.SelectedItem == null)
+                errors.AppendLine("Введите размер!");
+            if (CB_supplier.SelectedItem == null)
+                errors.AppendLine("Введите поставщика!");
+            if (CB_manufacturer.SelectedItem == null)
+                errors.AppendLine("Введите производителя!");
 
             if (errors.Length > 0) //проверка на ошибки
             {
@@ -104,6 +118,7 @@ namespace Clothes.Pages
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+            NavigationService.GoBack();
         }
 
         private void BT_open_Click(object sender, RoutedEventArgs e)
@@ -115,6 +130,8 @@ namespace Clothes.Pages
             {
                 img = File.ReadAllBytes(ofd.FileName);
                 Image_photo.Source = new ImageSourceConverter().ConvertFrom(img) as ImageSource;
+
+                _curCloth.photo = img;
             }
         }
 

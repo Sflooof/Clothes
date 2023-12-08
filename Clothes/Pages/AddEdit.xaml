@@ -40,8 +40,7 @@
 
                 <TextBlock Text="Дата покупки"></TextBlock>
                 <DatePicker x:Name="TB_purchase_date"></DatePicker>
-
-                <Image x:Name="Image_photo" Width="100" Height="100"></Image>
+                <Image x:Name="Image_photo" Width="100" Height="100" Source="{Binding CorrectPhoto}"></Image>
                 <Button Name="BT_open" Content="Выбрать" Click="BT_open_Click"></Button>
                 <Button Name="BT_save" Content="Сохранить" Click="BT_save_Click"></Button>
                 <Button Name="BT_exit" Content="Назад" Click="BT_exit_Click"></Button>

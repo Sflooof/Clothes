@@ -11,7 +11,8 @@ namespace Clothes.Entities
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.IO;
+
     public partial class Cloth
     {
         public int Id_cloth { get; set; }
@@ -23,6 +24,20 @@ namespace Clothes.Entities
         public int manufacturer { get; set; }
         public decimal price { get; set; }
         public System.DateTime delivery_date { get; set; }
+        public string CorrectDD
+        {
+            get
+            {
+                return delivery_date.ToString("d");
+            }
+        }
+        public string CorrectPD
+        {
+            get
+            {
+                return purchase_date.ToString("D");
+            }
+        }
         public System.DateTime purchase_date { get; set; }
         public byte[] photo { get; set; }
     
@@ -75,6 +90,15 @@ namespace Clothes.Entities
                     return "Hidden";
                 }
                 else return "Visible";
+            }
+        }
+        public byte[] CorrectPhoto
+        {
+            get
+            {
+                if (photo == null)
+                    return File.ReadAllBytes("../../Images/picture.png");
+                else return photo;
             }
         }
 

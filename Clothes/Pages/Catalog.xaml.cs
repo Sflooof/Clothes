@@ -54,7 +54,38 @@ namespace Clothes.Pages
         }
         private void UpdateClothes()
         {
+            var update_cloth = App.db.Cloth.ToList();
+            //поиск
+            update_cloth = update_cloth.Where(x => x.name.ToLower().Contains(TB_find.Text.ToLower())).ToList();           
+            listview_cloth.ItemsSource = update_cloth;
+            //сортировка по цене 
+            if (CB_sort.SelectedIndex == 0)
+            {
+                update_cloth = update_cloth.OrderBy(x => x.price).ToList();
+            }
+            else
+            {
+                update_cloth = update_cloth.OrderByDescending(x => x.price).ToList();
+            }
+        }
 
+        private void TB_find_TextChanged(TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TB_find_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateClothes();
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                App.db.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                listview_cloth.ItemsSource = App.db.Cloth.ToList();
+            }
         }
     }
 }
