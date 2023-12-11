@@ -29,6 +29,7 @@ namespace Clothes.Entities
         public virtual DbSet<Color> Color { get; set; }
         public virtual DbSet<Composition> Composition { get; set; }
         public virtual DbSet<Manufacturer> Manufacturer { get; set; }
+        public virtual DbSet<Return_clothes> Return_clothes { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Size> Size { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }

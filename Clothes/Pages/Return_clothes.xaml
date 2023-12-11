@@ -1,0 +1,21 @@
+﻿<Page x:Class="Clothes.Pages.Return_clothes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Clothes.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Return_clothes">
+
+    <Grid Background="#F9ECCC">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Одежда"></TextBlock>
+            <TextBlock Text="{Binding Correct_Clothes}"></TextBlock>
+            <TextBlock Text="Описание проблемы"></TextBlock>
+            <TextBox x:Name="TB_description" Height="173" TextWrapping="Wrap"></TextBox>
+            <Button Content="Оставить заявку"></Button>
+            <Button Content="Назад" Click="Button_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

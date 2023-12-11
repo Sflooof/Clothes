@@ -25,7 +25,7 @@
           <Key>
             <PropertyRef Name="Id_color" />
           </Key>
-          <Property Name="Id_color" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_color" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Composition">
@@ -41,6 +41,15 @@
           </Key>
           <Property Name="Id_manufacterer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Return_clothes">
+          <Key>
+            <PropertyRef Name="Id_return" />
+          </Key>
+          <Property Name="Id_return" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clothes_return" Type="int" Nullable="false" />
+          <Property Name="user_return" Type="int" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -86,7 +95,9 @@
           <Property Name="role" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Cloth_Color">
-          <End Role="Color" Type="Self.Color" Multiplicity="1" />
+          <End Role="Color" Type="Self.Color" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Cloth" Type="Self.Cloth" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Color">
@@ -98,7 +109,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cloth_Composition">
-          <End Role="Composition" Type="Self.Composition" Multiplicity="1" />
+          <End Role="Composition" Type="Self.Composition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Cloth" Type="Self.Cloth" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Composition">
@@ -110,7 +123,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cloth_Manufacturer">
-          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Cloth" Type="Self.Cloth" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Manufacturer">
@@ -122,7 +137,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cloth_Size">
-          <End Role="Size" Type="Self.Size" Multiplicity="1" />
+          <End Role="Size" Type="Self.Size" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Cloth" Type="Self.Cloth" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Size">
@@ -134,7 +151,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cloth_Supplier">
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Cloth" Type="Self.Cloth" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Supplier">
@@ -145,8 +164,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Return_clothes_Cloth">
+          <End Role="Cloth" Type="Self.Cloth" Multiplicity="1" />
+          <End Role="Return_clothes" Type="Self.Return_clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cloth">
+              <PropertyRef Name="Id_cloth" />
+            </Principal>
+            <Dependent Role="Return_clothes">
+              <PropertyRef Name="clothes_return" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Return_clothes_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Return_clothes" Type="Self.Return_clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Return_clothes">
+              <PropertyRef Name="user_return" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
@@ -162,6 +207,7 @@
           <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Composition" EntityType="Self.Composition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Return_clothes" EntityType="Self.Return_clothes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
@@ -186,6 +232,14 @@
           <AssociationSet Name="FK_Cloth_Supplier" Association="Self.FK_Cloth_Supplier">
             <End Role="Supplier" EntitySet="Supplier" />
             <End Role="Cloth" EntitySet="Cloth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Return_clothes_Cloth" Association="Self.FK_Return_clothes_Cloth">
+            <End Role="Cloth" EntitySet="Cloth" />
+            <End Role="Return_clothes" EntitySet="Return_clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Return_clothes_User" Association="Self.FK_Return_clothes_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Return_clothes" EntitySet="Return_clothes" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -217,12 +271,13 @@
           <NavigationProperty Name="Manufacturer1" Relationship="Self.FK_Cloth_Manufacturer" FromRole="Cloth" ToRole="Manufacturer" />
           <NavigationProperty Name="Size1" Relationship="Self.FK_Cloth_Size" FromRole="Cloth" ToRole="Size" />
           <NavigationProperty Name="Supplier1" Relationship="Self.FK_Cloth_Supplier" FromRole="Cloth" ToRole="Supplier" />
+          <NavigationProperty Name="Return_clothes" Relationship="Self.FK_Return_clothes_Cloth" FromRole="Cloth" ToRole="Return_clothes" />
         </EntityType>
         <EntityType Name="Color">
           <Key>
             <PropertyRef Name="Id_color" />
           </Key>
-          <Property Name="Id_color" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_color" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Cloth" Relationship="Self.FK_Cloth_Color" FromRole="Color" ToRole="Cloth" />
         </EntityType>
@@ -241,6 +296,17 @@
           <Property Name="Id_manufacterer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Cloth" Relationship="Self.FK_Cloth_Manufacturer" FromRole="Manufacturer" ToRole="Cloth" />
+        </EntityType>
+        <EntityType Name="Return_clothes">
+          <Key>
+            <PropertyRef Name="Id_return" />
+          </Key>
+          <Property Name="Id_return" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clothes_return" Type="Int32" Nullable="false" />
+          <Property Name="user_return" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cloth" Relationship="Self.FK_Return_clothes_Cloth" FromRole="Return_clothes" ToRole="Cloth" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Return_clothes_User" FromRole="Return_clothes" ToRole="User" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -287,10 +353,13 @@
           <Property Name="login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Return_clothes" Relationship="Self.FK_Return_clothes_User" FromRole="User" ToRole="Return_clothes" />
           <NavigationProperty Name="Role1" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
         <Association Name="FK_Cloth_Color">
-          <End Role="Color" Type="Self.Color" Multiplicity="1" />
+          <End Role="Color" Type="Self.Color" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Cloth" Type="Self.Cloth" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Color">
@@ -302,7 +371,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cloth_Composition">
-          <End Role="Composition" Type="Self.Composition" Multiplicity="1" />
+          <End Role="Composition" Type="Self.Composition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Cloth" Type="Self.Cloth" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Composition">
@@ -314,7 +385,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cloth_Manufacturer">
-          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Cloth" Type="Self.Cloth" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Manufacturer">
@@ -326,7 +399,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cloth_Size">
-          <End Role="Size" Type="Self.Size" Multiplicity="1" />
+          <End Role="Size" Type="Self.Size" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Cloth" Type="Self.Cloth" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Size">
@@ -338,7 +413,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cloth_Supplier">
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Cloth" Type="Self.Cloth" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Supplier">
@@ -349,8 +426,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Return_clothes_Cloth">
+          <End Role="Cloth" Type="Self.Cloth" Multiplicity="1" />
+          <End Role="Return_clothes" Type="Self.Return_clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cloth">
+              <PropertyRef Name="Id_cloth" />
+            </Principal>
+            <Dependent Role="Return_clothes">
+              <PropertyRef Name="clothes_return" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Return_clothes_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Return_clothes" Type="Self.Return_clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id_user" />
+            </Principal>
+            <Dependent Role="Return_clothes">
+              <PropertyRef Name="user_return" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
@@ -366,6 +469,7 @@
           <EntitySet Name="Color" EntityType="Self.Color" />
           <EntitySet Name="Composition" EntityType="Self.Composition" />
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" />
+          <EntitySet Name="Return_clothes" EntityType="Self.Return_clothes" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="Size" EntityType="Self.Size" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" />
@@ -390,6 +494,14 @@
           <AssociationSet Name="FK_Cloth_Supplier" Association="Self.FK_Cloth_Supplier">
             <End Role="Supplier" EntitySet="Supplier" />
             <End Role="Cloth" EntitySet="Cloth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Return_clothes_Cloth" Association="Self.FK_Return_clothes_Cloth">
+            <End Role="Cloth" EntitySet="Cloth" />
+            <End Role="Return_clothes" EntitySet="Return_clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Return_clothes_User" Association="Self.FK_Return_clothes_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Return_clothes" EntitySet="Return_clothes" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -440,6 +552,16 @@
               <MappingFragment StoreEntitySet="Manufacturer">
                 <ScalarProperty Name="Id_manufacterer" ColumnName="Id_manufacterer" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Return_clothes">
+            <EntityTypeMapping TypeName="clothesModel.Return_clothes">
+              <MappingFragment StoreEntitySet="Return_clothes">
+                <ScalarProperty Name="Id_return" ColumnName="Id_return" />
+                <ScalarProperty Name="clothes_return" ColumnName="clothes_return" />
+                <ScalarProperty Name="user_return" ColumnName="user_return" />
+                <ScalarProperty Name="description" ColumnName="description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

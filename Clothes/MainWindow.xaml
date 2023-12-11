@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothes"
         mc:Ignorable="d"
-        Title="Одежда" Height="500" Width="1000" WindowStartupLocation="CenterScreen" Icon="/icon.png">
+        Title="Одежда" Height="500" Width="1100" WindowStartupLocation="CenterScreen" Icon="/icon.png">
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
     </Grid>

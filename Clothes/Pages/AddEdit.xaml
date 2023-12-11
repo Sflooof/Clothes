@@ -15,20 +15,20 @@
                 <TextBox x:Name="TB_name" Text="{Binding name}"></TextBox>
                 
                 <TextBlock Text="Цвет"></TextBlock>
-                <ComboBox x:Name="CB_color"></ComboBox>
+                <ComboBox x:Name="CB_color" SelectedItem="{Binding color}"></ComboBox>
 
                 <TextBlock Text="Состав"></TextBlock>
-                <ComboBox x:Name="CB_composition"></ComboBox>
+                <ComboBox x:Name="CB_composition" SelectedItem="{Binding composition}"></ComboBox>
 
                 <TextBlock Text="Размер"></TextBlock>
-                <ComboBox x:Name="CB_size"></ComboBox>
+                <ComboBox x:Name="CB_size" SelectedItem="{Binding size}"></ComboBox>
 
                 <TextBlock Text="Поставщик"></TextBlock>
-                <ComboBox x:Name="CB_supplier"></ComboBox>
+                <ComboBox x:Name="CB_supplier" SelectedItem="{Binding supplier}"></ComboBox>
 
 
                 <TextBlock Text="Производитель"></TextBlock>
-                <ComboBox x:Name="CB_manufacturer"></ComboBox>
+                <ComboBox x:Name="CB_manufacturer" SelectedItem="{Binding manufacturer}"></ComboBox>
 
             </StackPanel>
             <StackPanel>
@@ -36,10 +36,11 @@
                 <TextBox x:Name="TB_price" Text="{Binding price}"></TextBox>
 
                 <TextBlock Text="Дата поставки"></TextBlock>
-                <DatePicker x:Name="TB_delivery_date"></DatePicker>
+                <DatePicker x:Name="TB_delivery_date" SelectedDate="{Binding delivery_date}"></DatePicker>
 
                 <TextBlock Text="Дата покупки"></TextBlock>
-                <DatePicker x:Name="TB_purchase_date"></DatePicker>
+                <DatePicker x:Name="TB_purchase_date" SelectedDate="{Binding purchase_date}"></DatePicker>
+                
                 <Image x:Name="Image_photo" Width="100" Height="100" Source="{Binding CorrectPhoto}"></Image>
                 <Button Name="BT_open" Content="Выбрать" Click="BT_open_Click"></Button>
                 <Button Name="BT_save" Content="Сохранить" Click="BT_save_Click"></Button>

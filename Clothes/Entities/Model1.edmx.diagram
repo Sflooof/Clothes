@@ -4,21 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fca23da2ad72484a88d631e88c0a8ca5" Name="Diagram1">
+      <Diagram DiagramId="26af91fecdad458dabd8a3286a7eb9ac" Name="Diagram1">
         <EntityTypeShape EntityType="clothesModel.Cloth" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="clothesModel.Color" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="clothesModel.Composition" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="clothesModel.Manufacturer" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="clothesModel.Role" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="clothesModel.Size" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="clothesModel.Supplier" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="clothesModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="clothesModel.User" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="clothesModel.Color" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="clothesModel.Composition" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="clothesModel.Manufacturer" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="clothesModel.Return_clothes" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="clothesModel.Role" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="clothesModel.Size" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="clothesModel.Supplier" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="clothesModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="clothesModel.User" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
         <AssociationConnector Association="clothesModel.FK_Cloth_Color" ManuallyRouted="false" />
         <AssociationConnector Association="clothesModel.FK_Cloth_Composition" ManuallyRouted="false" />
         <AssociationConnector Association="clothesModel.FK_Cloth_Manufacturer" ManuallyRouted="false" />
         <AssociationConnector Association="clothesModel.FK_Cloth_Size" ManuallyRouted="false" />
         <AssociationConnector Association="clothesModel.FK_Cloth_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="clothesModel.FK_Return_clothes_Cloth" ManuallyRouted="false" />
+        <AssociationConnector Association="clothesModel.FK_Return_clothes_User" ManuallyRouted="false" />
         <AssociationConnector Association="clothesModel.FK_User_Role" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

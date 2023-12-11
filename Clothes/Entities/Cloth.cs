@@ -15,6 +15,12 @@ namespace Clothes.Entities
 
     public partial class Cloth
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cloth()
+        {
+            this.Return_clothes = new HashSet<Return_clothes>();
+        }
+    
         public int Id_cloth { get; set; }
         public string name { get; set; }
         public int color { get; set; }
@@ -24,11 +30,14 @@ namespace Clothes.Entities
         public int manufacturer { get; set; }
         public decimal price { get; set; }
         public System.DateTime delivery_date { get; set; }
+        public System.DateTime purchase_date { get; set; }
+        public byte[] photo { get; set; }
+
         public string CorrectDD
         {
             get
             {
-                return delivery_date.ToString("d");
+                return delivery_date.ToString("D");
             }
         }
         public string CorrectPD
@@ -38,9 +47,7 @@ namespace Clothes.Entities
                 return purchase_date.ToString("D");
             }
         }
-        public System.DateTime purchase_date { get; set; }
-        public byte[] photo { get; set; }
-    
+
         public string CorrectColor
         {
             get
@@ -92,6 +99,22 @@ namespace Clothes.Entities
                 else return "Visible";
             }
         }
+        public string UserVisibility
+        {
+            get
+            {
+                if (App.CurrentUser == null)
+                {
+                    return "Hidden";
+                }
+                else if (App.CurrentUser.role == 2)
+                {
+                    return "Hidden";
+                }
+                else return "Visible";
+            }
+        }
+
         public byte[] CorrectPhoto
         {
             get
@@ -101,11 +124,12 @@ namespace Clothes.Entities
                 else return photo;
             }
         }
-
         public virtual Color Color1 { get; set; }
         public virtual Composition Composition1 { get; set; }
         public virtual Manufacturer Manufacturer1 { get; set; }
         public virtual Size Size1 { get; set; }
         public virtual Supplier Supplier1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Return_clothes> Return_clothes { get; set; }
     }
 }

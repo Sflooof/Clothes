@@ -15,6 +15,6 @@ namespace Clothes
     public partial class App : Application
     {
         public static clothesEntities db {get;} = new clothesEntities();
-        public static Entities.User CurrentUser = null;
+        public static User CurrentUser = null;
     }
 }

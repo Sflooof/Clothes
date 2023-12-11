@@ -14,6 +14,12 @@ namespace Clothes.Entities
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Return_clothes = new HashSet<Return_clothes>();
+        }
+    
         public int Id_user { get; set; }
         public string surname { get; set; }
         public string name { get; set; }
@@ -22,6 +28,8 @@ namespace Clothes.Entities
         public string password { get; set; }
         public int role { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Return_clothes> Return_clothes { get; set; }
         public virtual Role Role1 { get; set; }
     }
 }

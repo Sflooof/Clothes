@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Clothes.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="1000"
-      Title="Catalog" IsVisibleChanged="Page_IsVisibleChanged">
+      d:DesignHeight="500" d:DesignWidth="1100"
+      Title="Catalog">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -16,12 +16,12 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#F9ECCC"></Grid>
         <Grid Grid.Row="2" Background="#F9ECCC"></Grid>
-        <TextBox Name="TB_find" Grid.Row="0" HorizontalAlignment="Left" Margin="176,27,0,26" TextChanged="TB_find_TextChanged"></TextBox>
-        <ComboBox Name="CB_sort" Grid.Row="0" HorizontalAlignment="Left" Margin="514,27,0,26">
+        <TextBox Name="TB_find" Grid.Row="0" HorizontalAlignment="Center" Margin="0 0 100 0" TextChanged="TB_find_TextChanged"></TextBox>
+        <ComboBox Name="CB_sort" Grid.Row="0" HorizontalAlignment="Right" Margin="0 0 100 0" SelectionChanged="CB_sort_SelectionChanged">
             <ComboBoxItem Content="По возрастанию цены"></ComboBoxItem>
             <ComboBoxItem Content="По убыванию цены"></ComboBoxItem>
         </ComboBox>
-        <ListView Grid.Row="1" Name="listview_cloth">
+        <ListView Grid.Row="1" Name="listview_cloth" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -79,6 +79,7 @@
                         <StackPanel HorizontalAlignment="Center" Grid.Column="2">
                             <Button Content="Редактировать" Name="BT_edit" Click="BT_edit_Click" Visibility="{Binding AdminVisibiliti}"></Button>
                             <Button Content="Удалить" Name="BT_delete" Click="BT_delete_Click" Visibility="{Binding AdminVisibiliti}"></Button>
+                            <Button Content="Возврат" Name="BT_return" Click="BT_return_Click" Visibility="{Binding UserVisibility}"></Button>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

@@ -27,66 +27,91 @@ namespace Clothes.Pages
         private byte[] img = null;
         public AddEdit(Cloth curCloth)
         {
-            
+
             InitializeComponent();
 
             if (curCloth != null)
                 _curCloth = curCloth;
 
             FillComboBox();
-            DataContext =_curCloth;
+            DataContext = _curCloth;
+            //CB_color.ItemsSource = App.db.Color.ToList();
+            //CB_composition.ItemsSource = App.db.Composition.ToList();
+            //CB_size.ItemsSource = App.db.Size.ToList();
+            //CB_supplier.ItemsSource = App.db.Supplier.ToList();
+            //CB_manufacturer.ItemsSource = App.db.Manufacturer.ToList();
+            //if (_curCloth != null)
+            //{
+            //    var _curColor = App.db.Color.Where(x => x.Id_color == _curCloth.color).First();
+            //    CB_color.SelectedItem = _curColor.name;
+            //    var _curComposition = App.db.Composition.FirstOrDefault(x => x.Id_composition == _curCloth.composition);
+            //    CB_composition.SelectedItem = _curComposition.name;
+            //    var _curSize = App.db.Size.FirstOrDefault(x => x.Id_size == _curCloth.size);
+            //    CB_size.SelectedItem = _curSize.name;
+            //    var _curSuplier = App.db.Supplier.FirstOrDefault(x => x.Id_supplier == _curCloth.supplier);
+            //    CB_supplier.SelectedItem = _curSuplier.name;
+            //    var _curManufacturer = App.db.Manufacturer.FirstOrDefault(x => x.Id_manufacterer == _curCloth.manufacturer);
+            //    CB_manufacturer.SelectedItem = _curManufacturer.name;
+            //}
         }
 
         private void FillComboBox()
         {
-            foreach (var item in App.db.Color.ToList()) 
+            foreach (var item in App.db.Color.ToList())
             {
                 CB_color.Items.Add(item.name);
             }
-            //var _curColor = App.db.Color.FirstOrDefault(x => x.Id_color == _curCloth.color);
-            var _curColor = App.db.Color.Where(x => x.Id_color == _curCloth.color).First();
-            CB_color.SelectedItem = _curColor.name;
 
             foreach (var item in App.db.Composition.ToList())
             {
                 CB_composition.Items.Add(item.name);
             }
-            var _curComposition = App.db.Composition.FirstOrDefault(x => x.Id_composition == _curCloth.composition);
-            CB_composition.SelectedItem = _curComposition.name;
 
             foreach (var item in App.db.Size.ToList())
             {
                 CB_size.Items.Add(item.name);
             }
-            var _curSize = App.db.Size.FirstOrDefault(x => x.Id_size == _curCloth.size);
-            CB_size.SelectedItem = _curSize.name;
 
             foreach (var item in App.db.Supplier.ToList())
             {
                 CB_supplier.Items.Add(item.name);
             }
-            var _curSuplier = App.db.Supplier.FirstOrDefault(x => x.Id_supplier == _curCloth.supplier);
-            CB_supplier.SelectedItem = _curSuplier.name;
 
             foreach (var item in App.db.Manufacturer.ToList())
             {
                 CB_manufacturer.Items.Add(item.name);
             }
-            var _curManufacturer = App.db.Manufacturer.FirstOrDefault(x => x.Id_manufacterer == _curCloth.manufacturer);
-            CB_manufacturer.SelectedItem = _curManufacturer.name;
+
+            if (_curCloth.Id_cloth != 0)
+            {
+                var _curColor = App.db.Color.Where(x => x.Id_color == _curCloth.color).First();
+                CB_color.SelectedItem = _curColor.name;
+                var _curComposition = App.db.Composition.FirstOrDefault(x => x.Id_composition == _curCloth.composition);
+                CB_composition.SelectedItem = _curComposition.name;
+                var _curSize = App.db.Size.FirstOrDefault(x => x.Id_size == _curCloth.size);
+                CB_size.SelectedItem = _curSize.name;
+                var _curSuplier = App.db.Supplier.FirstOrDefault(x => x.Id_supplier == _curCloth.supplier);
+                CB_supplier.SelectedItem = _curSuplier.name;
+                var _curManufacturer = App.db.Manufacturer.FirstOrDefault(x => x.Id_manufacterer == _curCloth.manufacturer);
+                CB_manufacturer.SelectedItem = _curManufacturer.name;
+            }
 
             //Получение даты в DateTimePicker
             TB_delivery_date.Text = _curCloth.delivery_date.ToString();
             TB_purchase_date.Text = _curCloth.purchase_date.ToString();
-
-
         }
 
         private void BT_save_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder(); //счётчик ошибок
 
-            decimal cost = 0;
+            _curCloth.color = CB_color.SelectedIndex + 1;
+            _curCloth.size = CB_size.SelectedIndex + 1;
+            _curCloth.supplier = CB_supplier.SelectedIndex + 1;
+            _curCloth.manufacturer = CB_manufacturer.SelectedIndex + 1;
+            _curCloth.composition = CB_composition.SelectedIndex + 1;
+
+            // decimal cost = 0;
             if (string.IsNullOrWhiteSpace(_curCloth.name)) //проверка на поле
                 errors.AppendLine("Введите название!");
             if (CB_color.SelectedItem == null)
