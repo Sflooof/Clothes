@@ -14,27 +14,60 @@ namespace ClassLibrary1.Tests
         [TestMethod()]
         public void ValidatePasswordTest()
         {
-           //Arrange
-           string password = "123";
-            bool expected = true;
-
-           //Act
-           bool actual = PasswordChecker.ValidatePassword(password);
-
-           //Assert
-           Assert.AreEqual(expected, actual);
-        }
-
-        public void Check_4Symbols_ReturnFalse()
-        {
             //Arrange
-            string password = "fjv@1";
+            string password = "1";
+            string login = "1";
 
             //Act
-            bool actual = PasswordChecker.ValidatePassword(password);
+            bool actual = PasswordChecker.ValidateUser(password, login);
+
+            //Assert
+            Assert.IsTrue(actual);
+        }
+        [TestMethod()]
+        public void ValidatePasswordTest2()
+        {
+            //Arrange
+            string password = "1";
+            string login = " ";
+
+            //Act
+            bool actual = PasswordChecker.ValidateUser(password, login);
 
             //Assert
             Assert.IsFalse(actual);
+        }
+
+        [TestMethod()]
+        public void ValidatePasswordTest3()
+        {
+            //Arrange
+            string password = "1";
+            string login = "goga21";
+
+            //Act
+            bool actual = PasswordChecker.ValidateUser(password, login);
+
+            //Assert
+            Assert.IsFalse(actual);
+        }
+
+        [TestMethod()]
+        public void ValidateBackTest()
+        {
+            bool click_on = true;
+
+            bool actual = PasswordChecker.ValidateBack(click_on);
+            Assert.IsTrue(click_on);
+        }
+
+        [TestMethod()]
+        public void ValidatePriceTest()
+        {
+            string price = "3000";
+
+            bool actual = PasswordChecker.ValidatePrice(price);
+            Assert.IsTrue(actual);
         }
     }
 }
