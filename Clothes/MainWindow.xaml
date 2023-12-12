@@ -9,13 +9,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#F9ECCC"></Grid>
-        <Grid Grid.Row="2" Background="#F9ECCC"></Grid>
         <TextBlock Text="Склад одежды" FontWeight="Bold" Width="195" FontSize="30" Height="36" HorizontalAlignment="Center"></TextBlock>
         <Image Source="/Images/clothes_io.png" HorizontalAlignment="Left" Margin="5"></Image>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"></Frame>
     </Grid>
 </Window>
