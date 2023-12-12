@@ -87,5 +87,6 @@
         </ListView>
         <Button Grid.Row="2" Content="Назад" Name="BT_exit" Click="BT_exit_Click"></Button>
         <Button Grid.Row="2" Content="Добавить" Name="BT_add" Click="BT_add_Click" HorizontalAlignment="Left"></Button>
+        <Button Grid.Row="2" Content="Заявки" Name="BT_aplication" HorizontalAlignment="Right" Click="BT_aplication_Click"></Button>
     </Grid>
 </Page>

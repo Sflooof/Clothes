@@ -1,0 +1,55 @@
+﻿<Page x:Class="Clothes.Pages.Aplicalion_user"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Clothes.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="1100"
+      Title="Aplicalion_user">
+
+    <Grid Background="#F9ECCC">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="1" Name="listview_cloth" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="330"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="1" Margin="5" Orientation="Vertical">
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Номер заявки:"></TextBlock>
+                                <TextBlock Width="auto" Text="{Binding Id_return}"></TextBlock>
+                            </StackPanel>
+                            
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Название одежды:"></TextBlock>
+                                <TextBlock Width="auto" Text="{Binding Correct_cloth}"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Пользователь:"></TextBlock>
+                                <TextBlock Width="auto" Text="{Binding Correct_user_name}"></TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Причина возврата:"></TextBlock>
+                                <TextBlock Width="auto" Text="{Binding description}"></TextBlock>
+                            </StackPanel>
+
+                        </StackPanel>
+                        <Button Grid.Column="2" Content="Удалить" Click="Button_Click"></Button>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Grid.Row="2" Content="Назад" Name="BT_exit" Click="BT_exit_Click"></Button>
+    </Grid>
+</Page>

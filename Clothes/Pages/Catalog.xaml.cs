@@ -28,6 +28,7 @@ namespace Clothes.Pages
             if (App.CurrentUser == null || App.CurrentUser.role == 1)
             {
                 BT_add.Visibility = Visibility.Hidden;
+                BT_aplication.Visibility = Visibility.Hidden;
             }
         }
 
@@ -89,7 +90,12 @@ namespace Clothes.Pages
 
         private void BT_return_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Return_clothes());
+            NavigationService.Navigate(new Page_return_clothes((sender as Button).DataContext as Cloth));
+        }
+
+        private void BT_aplication_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Aplicalion_user());
         }
     }
 }

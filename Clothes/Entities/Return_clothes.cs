@@ -19,7 +19,7 @@ namespace Clothes.Entities
         public int user_return { get; set; }
         public string description { get; set; }
     
-        public string Correct_Clothes
+        public string name
         {
             get
             {
@@ -32,6 +32,22 @@ namespace Clothes.Entities
             get
             {
                 return User.Id_user.ToString();
+            }
+        }
+
+        public string Correct_cloth
+        {
+            get
+            {
+                return Cloth.name.ToString();
+            }
+        }
+
+        public string Correct_user_name
+        {
+            get
+            {
+                return User.name.ToString();
             }
         }
         public virtual Cloth Cloth { get; set; }

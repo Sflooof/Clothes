@@ -125,6 +125,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Aplicalion_user.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Catalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,7 +137,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Return_clothes.xaml">
+    <Page Include="Pages\Page_return_clothes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,14 +146,17 @@
     <Compile Include="Pages\AddEdit.xaml.cs">
       <DependentUpon>AddEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Aplicalion_user.xaml.cs">
+      <DependentUpon>Aplicalion_user.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Catalog.xaml.cs">
       <DependentUpon>Catalog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Return_clothes.xaml.cs">
-      <DependentUpon>Return_clothes.xaml</DependentUpon>
+    <Compile Include="Pages\Page_return_clothes.xaml.cs">
+      <DependentUpon>Page_return_clothes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
