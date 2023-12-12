@@ -16,11 +16,13 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#F9ECCC"></Grid>
         <Grid Grid.Row="2" Background="#F9ECCC"></Grid>
+        
         <TextBox Name="TB_find" Grid.Row="0" HorizontalAlignment="Center" Margin="0 0 100 0" TextChanged="TB_find_TextChanged"></TextBox>
         <ComboBox Name="CB_sort" Grid.Row="0" HorizontalAlignment="Right" Margin="0 0 100 0" SelectionChanged="CB_sort_SelectionChanged">
             <ComboBoxItem Content="По возрастанию цены"></ComboBoxItem>
             <ComboBoxItem Content="По убыванию цены"></ComboBoxItem>
         </ComboBox>
+        <TextBlock Grid.Row="0" Text="Каталог одежды" FontWeight="Bold"  FontSize="30" Height="36" HorizontalAlignment="Left" Margin="5"/>
         <ListView Grid.Row="1" Name="listview_cloth" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.ItemTemplate>
                 <DataTemplate>

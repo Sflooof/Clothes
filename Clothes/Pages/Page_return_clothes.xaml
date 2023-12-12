@@ -9,6 +9,7 @@
       Title="Page_return_clothes">
 
     <Grid Background="#F9ECCC">
+        <TextBlock Text="Добавление заявки" FontWeight="Bold" Width="300" FontSize="30" Height="36" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"/>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Одежда"></TextBlock>
             <TextBlock Text="{Binding name}"></TextBlock>
