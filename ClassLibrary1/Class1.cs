@@ -32,7 +32,7 @@ namespace ClassLibrary1
 
         public static bool ValidatePrice(string price)
         {
-            if (int.TryParse(price, out var result))
+            if (!int.TryParse(price, out var result))
             {
                 return false;
             }
