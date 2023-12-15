@@ -23,6 +23,7 @@ namespace Clothes.Pages
         public LoginPage()
         {
             InitializeComponent();
+            App.CurrentUser = null;
         }
 
         private void BT_goust_Click(object sender, RoutedEventArgs e)
